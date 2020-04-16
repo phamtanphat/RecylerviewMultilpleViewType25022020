@@ -20,7 +20,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ItemHolder>{
         mFoodModelArrayList = new ArrayList<>();
     }
     public void submitData(ArrayList<FoodModel> foodModelArrayList){
-        if (foodModelArrayList != null){
+        if (foodModelArrayList != null && foodModelArrayList.size() > 0){
             if (mFoodModelArrayList.size() > 0){
                 mFoodModelArrayList.clear();
                 mFoodModelArrayList.addAll(foodModelArrayList);
@@ -43,7 +43,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ItemHolder>{
     public void onBindViewHolder(@NonNull ItemHolder holder, int position) {
         FoodModel foodModel = mFoodModelArrayList.get(position);
         holder.mTvName.setText(foodModel.getName());
-        DecimalFormat decimalFormat = new DecimalFormat("###.###.###");
+        DecimalFormat decimalFormat = new DecimalFormat("#,##0.##");
         holder.mTvPrice.setText("$ "+ decimalFormat.format(foodModel.getPrice()));
         holder.mImg.setImageResource(foodModel.getImage());
         holder.mTvDesribe.setText(foodModel.getDescribe());
